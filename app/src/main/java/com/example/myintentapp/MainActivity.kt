@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val btnMoveWithDataActivity: Button = findViewById(R.id.btn_move_activity_data)
         btnMoveWithDataActivity.setOnClickListener(this)
+
+        val btnMoveWithObject: Button = findViewById(R.id.btn_move_activity_object)
+        btnMoveWithObject.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -26,10 +29,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btn_move_activity_data -> {
-                val moveWithDataIntent = Intent(this@MainActivity, MoveWithDataActivity::class.java)
-                moveWithDataIntent.putExtra(MoveWithDataActivity.EXTRA_NAME, "Mahesh")
-                moveWithDataIntent.putExtra(MoveWithDataActivity.EXTRA_AGE, 34)
-                startActivity(moveWithDataIntent)
+                val moveIntentWithData = Intent(this@MainActivity, MoveWithDataActivity::class.java)
+                moveIntentWithData.putExtra(MoveWithDataActivity.EXTRA_NAME, "Mahesh")
+                moveIntentWithData.putExtra(MoveWithDataActivity.EXTRA_AGE, 34)
+                startActivity(moveIntentWithData)
+            }
+
+            R.id.btn_move_activity_object -> {
+//                val person = Person("John Doe", 32, "john.doe@email.org", "New York")
+                val users = arrayListOf<Person>(
+                    Person(101, "Ahmad Fasehan"),
+                    Person(102, "Andris Firmansyah"),
+                    Person(103, "Akhirudin Sudiyat"),
+                    Person(104, "Bani Arham"),
+                    Person(105, "Rido Raudho")
+                )
+                val moveIntentWithObject = Intent(this@MainActivity, MoveWithObjectActivity::class.java)
+                moveIntentWithObject.putParcelableArrayListExtra(MoveWithObjectActivity.EXTRA_PERSON, users)
+                startActivity(moveIntentWithObject)
             }
         }
     }
