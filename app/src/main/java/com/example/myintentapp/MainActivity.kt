@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +37,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btn_move_activity_object -> {
-//                val person = Person("John Doe", 32, "john.doe@email.org", "New York")
-                val users = arrayListOf<Person>(
+                val users = arrayListOf(
                     Person(101, "Ahmad Fasehan"),
                     Person(102, "Andris Firmansyah"),
                     Person(103, "Akhirudin Sudiyat"),
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     Person(105, "Rido Raudho")
                 )
                 val moveIntentWithObject = Intent(this@MainActivity, MoveWithObjectActivity::class.java)
-                moveIntentWithObject.putParcelableArrayListExtra(MoveWithObjectActivity.EXTRA_PERSON, users)
+                moveIntentWithObject.putExtra(MoveWithObjectActivity.EXTRA_PERSON, users)
                 startActivity(moveIntentWithObject)
             }
         }

@@ -1,7 +1,5 @@
 package com.example.myintentapp
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
-data class Person(val id: Int?, val name: String?): Parcelable
+data class Person(val id: Int?, val name: String?): Serializable

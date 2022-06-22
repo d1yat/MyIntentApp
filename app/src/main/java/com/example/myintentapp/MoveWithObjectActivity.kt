@@ -15,7 +15,7 @@ class MoveWithObjectActivity : AppCompatActivity() {
 
         val tvObject: TextView = findViewById(R.id.tv_object_received)
 
-        val users = intent.getParcelableArrayListExtra<Person>(EXTRA_PERSON) as ArrayList<Person>
+        val users = intent.getSerializableExtra(EXTRA_PERSON) as ArrayList<Person>
         users.forEach { user -> tvObject.text = tvObject.text.toString().plus("\nID: ${user.id}\nName: ${user.name}\n") }
     }
 }
